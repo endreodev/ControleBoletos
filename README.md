@@ -1,6 +1,9 @@
 # Projeto
 
-A new Flutter Contador.
+A new Flutter PlayFow.
+
+Baseado no projeto
+https://www.notion.so/Material-para-as-aulas-73fe885c17c34f4d8116cc84ac14d434
 
 ## Getting Started
 
