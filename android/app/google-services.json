@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "950995703425",
+    "project_id": "playflowendreo",
+    "storage_bucket": "playflowendreo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950995703425:android:6db854aaace9821dfa1f80",
+        "android_client_info": {
+          "package_name": "com.example.nlw_application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950995703425-3l6rch29ckaar7c3v3bdb0kuafm0457n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nlw_application",
+            "certificate_hash": "b0f9fb9ac9f81de98972ba3b91085b7b182d9b2d"
+          }
+        },
+        {
+          "client_id": "950995703425-foajsdhrjk67scrblcmqub4mlosphc3g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsyq82emnOziTddLZZwEADgGyfYAyHRuQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950995703425-foajsdhrjk67scrblcmqub4mlosphc3g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
