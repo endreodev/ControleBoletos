@@ -22,10 +22,11 @@ class _AppState extends State<App> {
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Material(
-              child: Text(
-            "Não doi tentar novamente!",
-            textDirection: TextDirection.ltr,
-          ));
+            child: Text(
+              "Não doi tentar novamente!",
+              textDirection: TextDirection.ltr,
+            ),
+          );
         } else if (snapshot.connectionState == ConnectionState.done) {
           return AppWidget();
         }

@@ -11,6 +11,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Play Flow Boletos',
       theme: ThemeData(primaryColor: AppColors.primary),
       initialRoute: "/splash",
@@ -19,6 +20,7 @@ class AppWidget extends StatelessWidget {
         "/login": (context) => LoginPage(),
         "/home": (context) => HomePage()
       },
+      //home: SplashPage(),
     );
   }
 }
