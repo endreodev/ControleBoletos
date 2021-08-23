@@ -17,7 +17,7 @@ class AuthController {
       Navigator.pushReplacementNamed(context, '/home');
     } else {
       isAuthenticated = false;
-      Navigator.pushNamed(context, '');
+      Navigator.pushNamed(context, '/login');
     }
   }
 

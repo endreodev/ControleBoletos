@@ -65,7 +65,7 @@ class TextStyles {
     color: AppColors.primary,
   );
   static final buttonBoldHeading = GoogleFonts.inter(
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: FontWeight.w700,
     color: AppColors.heading,
   );
