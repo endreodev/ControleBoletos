@@ -22,7 +22,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
     controller.getAvailableCameras();
     controller.statusNotifier.addListener(() {
       if (controller.status.hasBarcode) {
-        Navigator.pushReplacementNamed(context, "/insert_boleto",
+        Navigator.pushReplacementNamed(context, "/insertBoleto",
             arguments: controller.status.barcode);
       }
     });
@@ -52,6 +52,8 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                 builder: (_, status, __) {
                   if (status.showCamera) {
                     return Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height,
                       color: Colors.blue,
                       child: controller.cameraController!.buildPreview(),
                     );

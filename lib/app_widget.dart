@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nlw_application/modulos/barcode/barcode_page.dart';
+import 'package:nlw_application/modulos/insert_boleto/insert_boleto.dart';
 
 import 'modulos/home/home_page.dart';
 import 'modulos/login/login_page.dart';
@@ -30,7 +31,8 @@ class AppWidget extends StatelessWidget {
         "/splash": (context) => SplashPage(),
         "/login": (context) => LoginPage(),
         "/home": (context) => HomePage(),
-        "/barcode": (context) => BarcodeScannerPage()
+        "/barcode": (context) => BarcodeScannerPage(),
+        "/insertBoleto": (context) => InsertBoletoPage()
       },
       //home: SplashPage(),
     );
