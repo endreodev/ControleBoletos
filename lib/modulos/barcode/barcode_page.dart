@@ -51,11 +51,10 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                 valueListenable: controller.statusNotifier,
                 builder: (_, status, __) {
                   if (status.showCamera) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      color: Colors.blue,
-                      child: controller.cameraController!.buildPreview(),
+                    return Expanded(
+                      child: Container(
+                        child: controller.cameraController!.buildPreview(),
+                      ),
                     );
                   } else {
                     return Container();
@@ -80,21 +79,11 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                 body: Column(
                   children: [
                     Expanded(
-                      child: Container(
-                        color: Colors.black,
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: Container(
                         color: Colors.transparent,
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        color: Colors.black,
-                      ),
-                    )
                   ],
                 ),
                 bottomNavigationBar: setlabelButton(
