@@ -101,13 +101,15 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                 if (status.hasError) {
                   return Align(
                       alignment: Alignment.bottomLeft,
-                      child: bottonSheetWidget(
+                      child: bottonsheetwidget(
                           primaryLabel: "Escanear novamente",
                           primaryOnPressed: () {
                             controller.scanWithCamera();
                           },
                           secundaryLabel: "Digitar código",
-                          secundaryOnPressed: () {},
+                          secundaryOnPressed: () {
+                            Navigator.pushNamed(context, '/insertBoleto');
+                          },
                           title:
                               "Não foi possível identificar um código de barras.",
                           subtitle:

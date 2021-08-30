@@ -3,7 +3,7 @@ import 'package:nlw_application/shared/themes/app_text_styles.dart';
 import 'package:nlw_application/shared/themes/appcolors.dart';
 import 'package:nlw_application/shared/widgets/label_button/setlabelButton.dart';
 
-class bottonSheetWidget extends StatelessWidget {
+class bottonsheetwidget extends StatelessWidget {
   final String primaryLabel;
   final VoidCallback primaryOnPressed;
   final String secundaryLabel;
@@ -11,7 +11,7 @@ class bottonSheetWidget extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const bottonSheetWidget({
+  const bottonsheetwidget({
     Key? key,
     required this.primaryLabel,
     required this.primaryOnPressed,

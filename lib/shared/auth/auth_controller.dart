@@ -14,7 +14,7 @@ class AuthController {
       saveUser(user);
       _user = user;
       isAuthenticated = true;
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, "/home");
     } else {
       isAuthenticated = false;
       Navigator.pushNamed(context, '/login');

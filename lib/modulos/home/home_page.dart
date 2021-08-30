@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nlw_application/modulos/home/home_controler.dart';
+import 'package:nlw_application/shared/models/boleto_model.dart';
 import 'package:nlw_application/shared/themes/app_text_styles.dart';
 import 'package:nlw_application/shared/themes/appcolors.dart';
+import 'package:nlw_application/shared/widgets/boleto_tile/boleto_list_widget.dart';
+import 'package:nlw_application/shared/widgets/boleto_tile/boleto_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,10 +16,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final controller = HomeController();
   final pages = [
-    Container(color: Colors.red),
-    Container(color: Colors.blue),
+    Container(child: BoletolistWidget()),
+    Container(child: null),
   ];
-  @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
@@ -89,7 +92,9 @@ class _HomePageState extends State<HomePage> {
             IconButton(
               onPressed: () {
                 controller.setPage(1);
-                setState(() {});
+                setState(() {
+                  Navigator.pushNamed(context, '/insertBoleto');
+                });
               },
               icon: Icon(
                 Icons.description_outlined,
