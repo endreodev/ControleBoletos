@@ -3,39 +3,40 @@ import 'package:flutter/material.dart';
 import 'app_widget.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(App());
+  runApp(AppFirebase());
 }
 
-class App extends StatefulWidget {
+class AppFirebase extends StatefulWidget {
   @override
-  _AppState createState() => _AppState();
+  _AppFirebaseState createState() => _AppFirebaseState();
 }
 
-class _AppState extends State<App> {
+class _AppFirebaseState extends State<AppFirebase> {
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _initialization,
-      builder: (context, snapshot) {
-        if (snapshot.hasError) {
-          return Material(
-            child: Text(
-              "Não doi tentar novamente!",
-              textDirection: TextDirection.ltr,
-            ),
-          );
-        } else if (snapshot.connectionState == ConnectionState.done) {
-          return AppWidget();
-        }
-        return Material(
-          child: Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
-      },
-    );
+        future: _initialization,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Material(
+              child: Center(
+                child: Text(
+                  "Não foi possível inicializar o Firebase",
+                  textDirection: TextDirection.ltr,
+                ),
+              ),
+            );
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            return AppWidget();
+          } else {
+            return Material(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        });
   }
 }

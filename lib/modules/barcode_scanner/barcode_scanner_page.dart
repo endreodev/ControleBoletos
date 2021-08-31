@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nlw_application/modules/barcode_scanner/barcode_scanner_controller.dart';
+import 'package:nlw_application/modules/barcode_scanner/barcode_scanner_status.dart';
+import 'package:nlw_application/shared/themes/app_colors.dart';
 import 'package:nlw_application/shared/themes/app_text_styles.dart';
-import 'package:nlw_application/shared/themes/appcolors.dart';
-import 'package:nlw_application/shared/widgets/bottonSheetWidget/bottonSheet.dart';
-import 'package:nlw_application/shared/widgets/label_button/setlabelButton.dart';
-
-import 'barcode_controller.dart';
-import 'barcode_status.dart';
+import 'package:nlw_application/shared/widgets/bottom_sheet/bottom_sheet_widget.dart';
+import 'package:nlw_application/shared/widgets/set_buttons/set_label_buttons.dart';
 
 class BarcodeScannerPage extends StatefulWidget {
   BarcodeScannerPage({Key? key}) : super(key: key);
@@ -22,7 +21,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
     controller.getAvailableCameras();
     controller.statusNotifier.addListener(() {
       if (controller.status.hasBarcode) {
-        Navigator.pushReplacementNamed(context, "/insertBoleto",
+        Navigator.pushReplacementNamed(context, "/insert_boleto",
             arguments: controller.status.barcode);
       }
     });
@@ -45,22 +44,18 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
       right: true,
       child: Stack(
         children: [
-          RotatedBox(
-            quarterTurns: 1,
-            child: ValueListenableBuilder<BarcodeScannerStatus>(
-                valueListenable: controller.statusNotifier,
-                builder: (_, status, __) {
-                  if (status.showCamera) {
-                    return Expanded(
-                      child: Container(
-                        child: controller.cameraController!.buildPreview(),
-                      ),
-                    );
-                  } else {
-                    return Container();
-                  }
-                }),
-          ),
+          ValueListenableBuilder<BarcodeScannerStatus>(
+              valueListenable: controller.statusNotifier,
+              builder: (_, status, __) {
+                if (status.showCamera) {
+                  return Container(
+                    color: Colors.blue,
+                    child: controller.cameraController!.buildPreview(),
+                  );
+                } else {
+                  return Container();
+                }
+              }),
           RotatedBox(
             quarterTurns: 1,
             child: Scaffold(
@@ -79,20 +74,30 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                 body: Column(
                   children: [
                     Expanded(
-                      flex: 1,
+                      child: Container(
+                        color: Colors.black,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
                       child: Container(
                         color: Colors.transparent,
                       ),
                     ),
+                    Expanded(
+                      child: Container(
+                        color: Colors.black,
+                      ),
+                    )
                   ],
                 ),
-                bottomNavigationBar: setlabelButton(
-                  primaryLabel: "Inserir código do boleto",
-                  primaryOnPressed: () {
+                bottomNavigationBar: SetLabelButtons(
+                  labelPrimary: "Inserir código do boleto",
+                  onTapPrimary: () {
                     controller.status = BarcodeScannerStatus.error("Error");
                   },
-                  secundaryLabel: "Adicionar da galeria",
-                  secundaryOnPressed: controller.scanWithImagePicker,
+                  labelSecondary: "Adicionar da galeria",
+                  onTapSecondary: controller.scanWithImagePicker,
                 )),
           ),
           ValueListenableBuilder<BarcodeScannerStatus>(
@@ -101,15 +106,13 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                 if (status.hasError) {
                   return Align(
                       alignment: Alignment.bottomLeft,
-                      child: bottonsheetwidget(
-                          primaryLabel: "Escanear novamente",
-                          primaryOnPressed: () {
+                      child: BottomSheetWidget(
+                          labelPrimary: "Escanear novamente",
+                          onTapPrimary: () {
                             controller.scanWithCamera();
                           },
-                          secundaryLabel: "Digitar código",
-                          secundaryOnPressed: () {
-                            Navigator.pushNamed(context, '/insertBoleto');
-                          },
+                          labelSecondary: "Digitar código",
+                          onTapSecondary: () {},
                           title:
                               "Não foi possível identificar um código de barras.",
                           subtitle:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nlw_application/modules/extract/extract_page.dart';
 import 'package:nlw_application/modules/home/home_controller.dart';
-import 'package:nlw_application/modulos/meus_boletos/meus_boletos_page.dart';
+import 'package:nlw_application/modules/meus_boletos/meus_boletos_page.dart';
 import 'package:nlw_application/shared/models/user_model.dart';
 import 'package:nlw_application/shared/themes/app_colors.dart';
 import 'package:nlw_application/shared/themes/app_text_styles.dart';

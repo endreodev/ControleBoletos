@@ -36,6 +36,8 @@ dependencies:
   camera: ^0.8.1+7
   image_picker: ^0.8.3+2
   flutter_masked_text2: ^0.9.1
+  font_awesome_flutter: ^9.1.0
+  animated_card: ^2.0.0
 
 
 dev_dependencies:

@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nlw_application/shared/auth/auth_controller.dart';
 import 'package:nlw_application/shared/models/user_model.dart';
 
 class LoginController {
+  final authController = AuthController();
   Future<void> googleSignIn(BuildContext context) async {
-    final authController = AuthController();
-
     GoogleSignIn _googleSignIn = GoogleSignIn(
       scopes: [
         'email',
@@ -19,7 +18,9 @@ class LoginController {
         photoURL: response.photoUrl,
       );
       authController.setUser(context, user);
+      print(response);
     } catch (error) {
+      authController.setUser(context, null);
       print(error);
     }
   }
