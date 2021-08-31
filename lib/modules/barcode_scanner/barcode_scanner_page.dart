@@ -48,9 +48,11 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
               valueListenable: controller.statusNotifier,
               builder: (_, status, __) {
                 if (status.showCamera) {
-                  return Container(
-                    color: Colors.blue,
-                    child: controller.cameraController!.buildPreview(),
+                  return RotatedBox(
+                    quarterTurns: 1,
+                    child: Container(
+                      child: controller.cameraController!.buildPreview(),
+                    ),
                   );
                 } else {
                   return Container();
@@ -59,46 +61,34 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
           RotatedBox(
             quarterTurns: 1,
             child: Scaffold(
-                backgroundColor: Colors.transparent,
-                appBar: AppBar(
-                  backgroundColor: Colors.black,
-                  centerTitle: true,
-                  title: Text(
-                    "Escaneie o código de barras do boleto",
-                    style: TextStyles.buttonBackground,
-                  ),
-                  leading: BackButton(
-                    color: AppColors.background,
-                  ),
+              backgroundColor: Colors.transparent,
+              appBar: AppBar(
+                backgroundColor: Colors.black,
+                centerTitle: true,
+                title: Text(
+                  "Escaneie o código de barras do boleto",
+                  style: TextStyles.buttonBackground,
                 ),
-                body: Column(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        color: Colors.black,
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Container(
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        color: Colors.black,
-                      ),
-                    )
-                  ],
+                leading: BackButton(
+                  color: AppColors.background,
                 ),
-                bottomNavigationBar: SetLabelButtons(
-                  labelPrimary: "Inserir código do boleto",
-                  onTapPrimary: () {
-                    controller.status = BarcodeScannerStatus.error("Error");
-                  },
-                  labelSecondary: "Adicionar da galeria",
-                  onTapSecondary: controller.scanWithImagePicker,
-                )),
+              ),
+              body: Column(
+                children: [
+                  Container(
+                    color: Colors.transparent,
+                  ),
+                ],
+              ),
+              bottomNavigationBar: SetLabelButtons(
+                labelPrimary: "Inserir código do boleto",
+                onTapPrimary: () {
+                  controller.status = BarcodeScannerStatus.error("Error");
+                },
+                labelSecondary: "Adicionar da galeria",
+                onTapSecondary: controller.scanWithImagePicker,
+              ),
+            ),
           ),
           ValueListenableBuilder<BarcodeScannerStatus>(
               valueListenable: controller.statusNotifier,
@@ -112,7 +102,10 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                             controller.scanWithCamera();
                           },
                           labelSecondary: "Digitar código",
-                          onTapSecondary: () {},
+                          onTapSecondary: () {
+                            Navigator.pushReplacementNamed(
+                                context, "/insert_boleto");
+                          },
                           title:
                               "Não foi possível identificar um código de barras.",
                           subtitle:

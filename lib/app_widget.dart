@@ -6,6 +6,7 @@ import 'modules/barcode_scanner/barcode_scanner_page.dart';
 import 'modules/home/home_page.dart';
 import 'modules/insert_boleto/insert_boleto_page.dart';
 import 'modules/login/login_page.dart';
+import 'modules/meus_boletos/meus_boletos_page.dart';
 import 'modules/splash/splash_page.dart';
 import 'shared/themes/app_colors.dart';
 
@@ -21,6 +22,7 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Pay Flow',
       theme: ThemeData(
           primarySwatch: Colors.orange, primaryColor: AppColors.primary),
@@ -31,6 +33,7 @@ class AppWidget extends StatelessWidget {
               user: ModalRoute.of(context)!.settings.arguments as UserModel,
             ),
         "/login": (context) => LoginPage(),
+        "/meus_boletos": (context) => MeusBoletosPage(),
         "/barcode_scanner": (context) => BarcodeScannerPage(),
         "/insert_boleto": (context) => InsertBoletoPage(
             barcode: ModalRoute.of(context) != null
